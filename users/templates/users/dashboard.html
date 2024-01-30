@@ -1,0 +1,72 @@
+{% extends "ticket/base.html" %}
+{% load static %}
+{% block content %}
+
+
+<nav class="navbar navbar-dark bg-dark navbar-expand-lg py-3 fixed-top">
+    <div class="container-fluid">
+      <a class="px-3 navbar-brand" href="{% url "home" %}">Turbo Jet</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNavDropdown">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+            <li class="nav-item">
+              <a class="nav-link active" aria-current="page" href="{% url "profile" %}">Profile</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link text-info" href="{% url "flights" %}">Purchase a Ticket</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link text-primary" href="{% url "search" %}">Search a Flight</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link text-danger" href="{% url "logout" %}">Log Out</a>
+            </li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              About US
+            </a>
+            <ul class="dropdown-menu">
+              <li><a class="dropdown-item" href="{% url "about" %}">Contact Us</a></li>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <section>
+    <div class='container'>
+    <div class="card-group">
+      <div class="card"><a href='{% url "home" %}'>
+        <img class="img-fluid ms-auto d-none d-sm-block" src="{% static '/Image/main.png' %}" alt=""></a>
+        <div class="card-body">
+          <h5 class="card-title"><a href='{% url "dashboard" %}' class='text-primary'>Home</a></h5>
+          <p class="card-text">Main page, in other words, first page</p>
+          <p class="card-text"><small class="text-body-secondary">updated recently</small></p>
+        </div>
+      </div>
+      <div class="card"><a href='{% url "profile" %}'>
+        <img class="img-fluid ms-auto d-none d-sm-block" src="{% static '/Image/profile.jpg' %}" alt=""></a>
+        <div class="card-body">
+          <h5 class="card-title"><a href='{% url "profile" %}' class='text-dark'>Profile</a></h5>
+          <p class="card-text">Profile page, show's your available Ticket</p>
+          <p class="card-text"><small class="text-body-secondary">updated recently</small></p>
+        </div>
+      </div>
+      <div class="card"><a href='{% url "flights" %}'>
+        <img class="img-fluid ms-auto d-none d-sm-block" src="{% static '/Image/flights.jpg' %}" alt=""></a>
+        <div class="card-body">
+          <h5 class="card-title"><a href='{% url "flights" %}' class='text-danger'>Flights</a></h5>
+          <p class="card-text">This Page will show our Flights for Purchasing!</p>
+          <p class="card-text"><small class="text-body-secondary">updated recently</small></p>
+        </div>
+      </div>
+    </div>
+  </div>
+  </section>
+
+
+
+
+{% endblock content %}

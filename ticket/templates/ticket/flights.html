@@ -1,0 +1,78 @@
+{% extends "ticket/base.html" %}
+{% block content %}
+{% for flight in flights %}
+
+<nav class="navbar navbar-dark bg-dark navbar-expand-lg py-3 fixed-top">
+  <div class="container-fluid">
+    <a class="px-3 navbar-brand" href="{% url "home" %}">Turbo Jet</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNavDropdown">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="{% url "home" %}">Home</a>
+          </li>
+
+          <li class="nav-item">
+            <a class="nav-link text-primary" href="{% url "search" %}">Search a Flight</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link text-danger" href="{% url "logout" %}">Log Out</a>
+          </li>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            About US
+          </a>
+          <ul class="dropdown-menu">
+            <li><a class="dropdown-item" href="{% url "about" %}">Contact Us</a></li>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+
+
+
+<div class='container'>
+    <div class='row text-center'>
+    
+      <div class='col-md'>
+        <div class='card bg-dark border-light text-light'>
+          <div class='card-body text-center'>
+            <h3 class='card-header mb-3'>
+                Flight ID: {{ flight.flight_id }}
+            </h3>
+            <p class='card-text'>
+                Departure Date: {{ flight.departure_date }}
+            </p>
+            <p class='card-text'>
+                Departure Time: {{ flight.departure_time }}
+              </p>
+              <p class='card-text'>
+                Arrival Date: {{ flight.arrival_date }}
+              </p>
+              <p class='card-text'>
+                Departure Location: {{ flight.departure_location }}
+              </p>
+              <p class='card-text'>
+                Arrival Location: {{ flight.arrival_location }}
+              </p>
+              <p class='card-text'>
+                Flight Type:</strong> {{ flight.flight_type }}
+              </p>
+              <p class='card-text'>
+                Plane Model: {{ flight.plane_id }}
+              </p>
+            <h6>
+                <a href="{% url 'buy_ticket' %}?flight_id={{ flight.flight_id }}&departure_location={{ flight.departure_location }}&arrival_location={{ flight.arrival_location }}&departure_date={{ flight.departure_date }}">Buy Ticket</a>
+            </h6>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+{% endfor %}
+{% endblock content %}

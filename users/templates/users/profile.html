@@ -1,0 +1,44 @@
+{% extends "ticket/base.html" %}
+{% load qr_code %}
+{% block content %}
+
+<nav class="navbar navbar-dark bg-dark navbar-expand-lg py-3 fixed-top">
+    <div class="container-fluid">
+      <a class="px-3 navbar-brand" href="{% url "home" %}">Turbo Jet</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNavDropdown">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+            <li class="nav-item">
+              <a class="nav-link active" aria-current="page" href="{% url "home" %}">Home</a>
+            </li>
+
+          <li class="nav-item">
+            <a class="nav-link text-info" href="{% url "flights" %}">Purchase a Ticket</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link text-danger" href="{% url "logout" %}">Log Out</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link text-primary" href="{% url "search" %}">Search a Flight</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <div class="card bg-body-secondary text-center" style="width: 18rem;">
+    {% qr_from_text ticket_id size="m" image_format="png" error_correction="L" %}
+    
+    <div class="card-body">
+      <h5 class="card-title">{{name}} , {{national_id}}</h5>
+    </div>
+    <ul class="list-group list-group-flush">
+      <li class="list-group-item">Flight Number: {{flight_ID}},<span class='text-danger'>{{flight_class}}</span></li>
+      <li class="list-group-item">from <span class='text-primary'>{{departure}}</span> to <span class='text-primary'>{{arrival}}</span></li>
+      <li class="list-group-item">Seat Number: {{seat_number}} </li>
+      <li class="list-group-item">Date and Time: {{booking_date}}</li>
+    </ul>
+  </div>
+{% endblock content%}

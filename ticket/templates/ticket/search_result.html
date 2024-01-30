@@ -1,0 +1,21 @@
+{% extends "ticket/base.html" %}
+{% block content %}
+<p class='text-light'>We offer these Tickets for you: Go to your Profile to purchase them</p>
+<a href= {% url "profile" %} class='px-2'>Profile</a>
+<ul> 
+    {% for flight in data %}
+    <li>
+        <strong>Flight ID:</strong> {{ flight.flight_id }}<br>
+        <strong>Departure Date:</strong> {{ flight.departure_date }}<br>
+        <strong>Departure Time:</strong> {{ flight.departure_time }}<br>
+        <strong>Arrival Date:</strong> {{ flight.arrival_date }}<br>
+        <strong>Departure Location:</strong> {{ flight.departure_location }}<br>
+        <strong>Arrival Location:</strong> {{ flight.arrival_location }}<br>
+        <strong>Flight Type:</strong> {{ flight.flight_type }}<br>
+        <strong>Plane ID:</strong> {{ flight.plane_id }}<br>
+        ********************************************************
+    </li>
+{% endfor %}
+     
+</ul>
+{% endblock content %}

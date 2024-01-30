@@ -1,0 +1,27 @@
+{% extends "ticket/base.html" %}
+{% block content %}
+
+<h1 class='text-info'>Here You are:</h1>
+<p>
+<ul>
+    <li>
+        Flight Number : {{flight_id}}
+    </li>
+    <li>
+        Name : {{customer_first}} {{customer_last}}
+    </li>
+    <li>
+        Seat Number : {{seat_number}}
+    </li>
+    <li>
+        Departure Date: {{departure_date}}
+    </li>
+    <a href='{% url "profile" %}' class='text-primary'> go to Profile </a>
+</ul>
+</p>
+
+
+
+
+
+{% endblock content %}

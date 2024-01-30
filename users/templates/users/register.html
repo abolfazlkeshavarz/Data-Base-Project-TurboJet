@@ -1,0 +1,40 @@
+{% extends "ticket/base.html" %}
+{% block content %}
+
+<nav class="navbar navbar-dark bg-dark navbar-expand-lg py-3 fixed-top">
+    <div class="container-fluid">
+      <a class="px-3 navbar-brand" href="{% url "home" %}">Turbo Jet</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNavDropdown">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+
+            <li class="nav-item">
+              <a class="nav-link text-primary" href="{% url "home" %}">Home</a>
+            </li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              About US
+            </a>
+            <ul class="dropdown-menu">
+              <li><a class="dropdown-item" href="{% url "about" %}">Contact Us</a></li>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+
+
+<div class='text-center mt-5 row justify-content-center'>
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button class='btn btn-primary w-25' type="submit">Register</button>
+    </form>
+    <a class='py-3 text-info' href="{% url 'login' %}"> Have an Account? Login!</a>
+
+</div>
+
+{% endblock content %}
